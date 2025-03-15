@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8#y96trf*84wl&t)95#_$y)y0gna33em&slo(v^+=wen1h-n93
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,9 +125,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-#
-# CSRF_TRUSTED_ORIGINS = [
-#     'https://djangosite-richardyoung.amvera.io',
-# ]
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://telegram-app-richardyoung.amvera.io/',
+]

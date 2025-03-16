@@ -1,4 +1,4 @@
-import json
+import json, logging
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -13,6 +13,7 @@ from GameLauncher.settings import TELEGRAM_BOT_TOKEN
 # Создаем приложение с помощью ApplicationBuilder (python-telegram-bot v20+)
 application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
+logger = logging.getLogger(__name__)
 
 # Асинхронный обработчик команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -44,11 +45,13 @@ application.add_handler(CommandHandler("start", start))
 def telegram_webhook(request):
     if request.method == "POST":
         try:
-            update = Update.de_json(json.loads(request.body.decode("utf-8")), application.bot)
+            data = json.loads(request.body.decode("utf-8"))
+            logger.info(f"Получено обновление: {data}")  # Логируем входящие данные
+            update = Update.de_json(data, application.bot)
         except Exception as e:
+            logger.error(f"Ошибка декодирования: {e}")
             return HttpResponseBadRequest(f"Ошибка декодирования: {e}")
 
-        # Вызываем асинхронный метод process_update через обёртку async_to_sync
         async_to_sync(application.process_update)(update)
         return JsonResponse({"status": "ok"})
     return HttpResponseBadRequest("Метод не поддерживается")

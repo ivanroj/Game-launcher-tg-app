@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-8#y96trf*84wl&t)95#_$y)y0gna33em&slo(v^+=wen1h-n93'
 
+TELEGRAM_BOT_TOKEN = '7902554187:AAGOonAt1igThUgAVto22LdyHfEcp5wH0FQ'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -135,3 +137,4 @@ CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = [
     'https://telegram-app-richardyoung.amvera.io/',
 ]
+

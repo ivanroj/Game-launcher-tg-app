@@ -29,7 +29,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             )
         ]
     ]
+    print('start/handler')
     reply_markup = InlineKeyboardMarkup(keyboard)
+    
     await update.message.reply_text(
         "Добро пожаловать! Запустите мини-приложение:",
         reply_markup=reply_markup

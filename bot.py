@@ -27,8 +27,6 @@ async def send_welcome(message: Message):
     await message.answer("Привет! Для входа в приложение нажми на кнопку ниже:", reply_markup=keyboard)
 
 async def main():
-    # Удаляем webhook перед запуском polling
-    await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
 if __name__ == "__main__":

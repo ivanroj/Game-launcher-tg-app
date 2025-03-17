@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from TelegramApp.views import telegram_webhook, miniapp_home
+# from TelegramApp.views import telegram_webhook, miniapp_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('TelegramApp.urls')),
-    path("telegram/webhook/", telegram_webhook, name="telegram_webhook"),
+    # path("telegram/webhook/", telegram_webhook, name="telegram_webhook"),
     # path("games/tetris/", tetris_game, name="tetris_game"),
 ]

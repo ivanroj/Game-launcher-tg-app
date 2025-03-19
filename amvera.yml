@@ -8,4 +8,5 @@ build:
 run:
   persistenceMount: /data
   containerPort: 80
-  command: gunicorn GameLauncher.wsgi:application  --bind 0.0.0.0:80 && python bot.py
+  scriptName: bot.py
+  command: gunicorn GameLauncher.wsgi:application  --bind 0.0.0.0:80

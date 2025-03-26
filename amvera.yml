@@ -6,6 +6,7 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  scriptName: bot.py
+  scriptName: manage.py
   persistenceMount: /data
   containerPort: 80
+  command: gunicorn GameLauncher.wsgi:application  --bind 0.0.0.0:80
